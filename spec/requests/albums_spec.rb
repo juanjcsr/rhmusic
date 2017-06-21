@@ -48,7 +48,7 @@ RSpec.describe 'Albums API', type: :request do
     let(:valid_attributes) { { name: 'A New Album' }}
 
     context 'when the request is valid' do
-      before { post '/api/albums', params: :valid_attributes }
+      before { post '/api/albums', params: valid_attributes }
 
       it 'creates an album' do
         expect(json['name']).to eq('A New Album')
@@ -60,7 +60,7 @@ RSpec.describe 'Albums API', type: :request do
     end
 
     context 'when the request is invalid' do
-      before { post '/api/albums', params: { name: nil} }
+      before { post '/api/albums', params: { name: ""} }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
