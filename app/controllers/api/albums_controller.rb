@@ -10,6 +10,19 @@ class Api::AlbumsController < ApplicationController
     @album = Album.create!(album_params)
     json_response(@album, :created)
   end
+  
+  def show
+    json_response(@album)
+  end
+
+  def update
+    @album.update(album_params)
+  end
+
+  def destroy
+    @album.destroy
+    head :no_content
+  end
 
   private
 

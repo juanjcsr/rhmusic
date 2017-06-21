@@ -18,7 +18,7 @@ RSpec.describe 'Albums API', type: :request do
   end
 
   describe 'GET /api/albums/:id' do
-    before { get "/api/albums/#{todo_id}" }
+    before { get "/api/albums/#{album_id}" }
 
     context 'when the album exists' do
       it 'returns the album' do
@@ -32,14 +32,14 @@ RSpec.describe 'Albums API', type: :request do
     end
 
     context 'when the album does not exist' do
-      let(:todo_id) { 999 }
+      let(:album_id) { 999 }
 
       it 'has a 404 status code' do
         expect(response).to have_http_status(404)
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/no album/)
+        expect(response.body).to match(/Couldn't find Album/)
       end
     end
   end
@@ -66,7 +66,7 @@ RSpec.describe 'Albums API', type: :request do
         expect(response).to have_http_status(422)
       end
       it 'returns a failure-to-validate message' do
-        expect(response.body).to match("/validation failed/")
+        expect(response.body).to match(/validation failed/)
       end
     end
   end
