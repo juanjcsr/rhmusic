@@ -72,10 +72,10 @@ RSpec.describe 'Tracks API' do
     end
 
     context 'when request attr are invalid' do
-      before { post "/api/albums/#{album_id}/tracks", params: {} }
+      before { post "/api/albums/#{album_id}/tracks", params: { name: ""} }
 
       it 'has an error message' do
-        expect(response.body).to match(/Validation failed: Name can't be blank/)
+        expect(response.body).to match(/validation failed/)
       end
 
       it 'has an error status code' do
@@ -91,7 +91,7 @@ RSpec.describe 'Tracks API' do
 
     context 'when the track exists' do
       it 'updates the track' do
-        updated = Track.find(:id)
+        updated = Track.find(id)
         expect(updated.name).to match(/Edited song/)
       end
     end
@@ -99,7 +99,7 @@ RSpec.describe 'Tracks API' do
     context 'when the track does not exist' do
       let(:id) { 0 }
       it 'returns an error msg' do
-        expect(response).to match(/Couldn't find Track/)
+        expect(response.body).to match(/Couldn't find Track/)
       end
     end
   end
