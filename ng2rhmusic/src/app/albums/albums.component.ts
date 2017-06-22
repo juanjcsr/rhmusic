@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { AlbumsService } from "app/services/albums/albums.service";
+import {Component, OnInit, Output} from '@angular/core';
+import {AlbumsService} from "app/services/albums/albums.service";
 import {Album} from "app/albums/albums";
 
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
-  styleUrls: ['./albums.component.css']
+  styleUrls: ['./albums.component.css'],
 })
 export class AlbumsComponent implements OnInit {
 
   public albums: Album[];
+
+  @Output() album: Album;
 
   constructor(private aService: AlbumsService) { }
 
@@ -30,6 +32,10 @@ export class AlbumsComponent implements OnInit {
     this.aService.deleteAlbum(album.id).subscribe( () => {
       this.albums = this.albums.filter( a => a != album);
     } )
+  }
+
+  public getTracks(album: Album){
+    this.album = album;
   }
 
 }

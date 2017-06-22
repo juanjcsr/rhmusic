@@ -8,6 +8,7 @@ import {TracksComponent} from "app/tracks/tracks.component";
 
 describe('AlbumsComponent', () => {
   let component: AlbumsComponent;
+  let albumsService: AlbumsService;
   let fixture: ComponentFixture<AlbumsComponent>;
 
   beforeEach(async(() => {
@@ -22,6 +23,7 @@ describe('AlbumsComponent', () => {
     fixture = TestBed.createComponent(AlbumsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    albumsService = TestBed.get(AlbumsService);
   });
 
   it('should be created', () => {
@@ -52,6 +54,7 @@ describe('AlbumsComponent', () => {
 });
 
 class MockAlbumService {
+  
   getAlbums() {
     return Observable.of([
       {
