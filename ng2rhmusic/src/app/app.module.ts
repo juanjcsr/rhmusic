@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AppRoutingModule } from "app/app.router";
-import { HttpModule } from "@angular/http/http";
+import { HttpModule } from "@angular/http";
 import {AlbumsService} from "app/services/albums/albums.service";
 
 @NgModule({

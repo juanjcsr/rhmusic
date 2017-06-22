@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlbumsComponent } from './albums.component';
+import { AlbumsService } from "app/services/albums/albums.service";
 
 describe('AlbumsComponent', () => {
   let component: AlbumsComponent;
@@ -8,7 +9,8 @@ describe('AlbumsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlbumsComponent ]
+      declarations: [ AlbumsComponent ],
+      providers: [ AlbumsService ]
     })
     .compileComponents();
   }));
