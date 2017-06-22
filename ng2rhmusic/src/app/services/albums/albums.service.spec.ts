@@ -1,5 +1,5 @@
 import { TestBed, inject } from '@angular/core/testing';
-import {HttpModule, Http, BaseRequestOptions, XHRBackend, Response, ResponseOptions} from '@angular/http';
+import { HttpModule, Http, BaseRequestOptions, XHRBackend, Response, ResponseOptions, RequestMethod } from '@angular/http';
 import {MockBackend} from '@angular/http/testing';
 
 import { AlbumsService } from './albums.service';
@@ -27,7 +27,6 @@ describe('AlbumsService', () => {
           { id: 2, name: 'Album 2' },
           { id: 3, name: 'Album 3' },
         ];
-      
       mockBackend.connections.subscribe((conn) => {
         conn.mockRespond(new Response(new ResponseOptions({
           body: JSON.stringify(mockResponse)
@@ -41,4 +40,20 @@ describe('AlbumsService', () => {
       });
     }
   ));
+
+  it('should return the value when creating a new album to the endpoint',
+    inject([AlbumsService, XHRBackend], (service: AlbumsService, mockBackend: MockBackend) => {
+      const mockResponse = { id: 4, name: "album 4"}
+      mockBackend.connections.subscribe(( conn ) => {
+        expect(conn.request.method).toBe(RequestMethod.Post);
+        conn.mockRespond(new Response(new ResponseOptions({
+          body: JSON.stringify(mockResponse)
+        })))
+      });
+      const testString = "album 4";
+      service.postAlbum(testString).subscribe( (album) => {
+        expect(album).toBeTruthy();
+        expect(album.name).toBe("album 4");
+      });
+    }));
 });

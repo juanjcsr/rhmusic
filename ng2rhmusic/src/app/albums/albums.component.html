@@ -5,3 +5,9 @@
 <pre>
   {{ albums | json }}
 </pre>
+
+<div>
+  <div *ngFor="let album of albums">
+    {{album.name}}
+  </div>
+</div>

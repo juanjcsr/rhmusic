@@ -15,4 +15,9 @@ export class AlbumsService {
       .map( d => d.json() )
   }
 
+  public postAlbum(name: string){
+    return this.http.post(this.albumsUrl, { name: name })
+      .map( d => d.json() )
+  }
+
 }

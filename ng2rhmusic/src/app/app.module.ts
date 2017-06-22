@@ -6,11 +6,13 @@ import { AlbumsComponent } from './albums/albums.component';
 import { AppRoutingModule } from "app/app.router";
 import { HttpModule } from "@angular/http";
 import {AlbumsService} from "app/services/albums/albums.service";
+import { TracksComponent } from './tracks/tracks.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlbumsComponent
+    AlbumsComponent,
+    TracksComponent
   ],
   imports: [
     BrowserModule,
