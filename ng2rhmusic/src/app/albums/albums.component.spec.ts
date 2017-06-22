@@ -27,6 +27,11 @@ describe('AlbumsComponent', () => {
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should initialize album property', () => {
+    expect(component.albums).toBeTruthy();
+    expect(component.albums).toContain({id: 26, name: "Album 26"})
+  })
 });
 
 class MockAlbumService {
@@ -37,5 +42,14 @@ class MockAlbumService {
         name: "Album 26",
       }]);
 
+  }
+
+  postAlbum(name: string) {
+    return Observable.of([
+      {
+        id: 22,
+        name: name,
+      }
+    ]);
   }
 }

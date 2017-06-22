@@ -55,5 +55,25 @@ describe('AlbumsService', () => {
         expect(album).toBeTruthy();
         expect(album.name).toBe("album 4");
       });
-    }));
+    })
+  );
+
+  it('should return a single album',
+   inject([AlbumsService, XHRBackend], (service: AlbumsService, mockBackend: MockBackend) => {
+    const mockResponse = { id: 5, name: "single album"};
+    mockBackend.connections.subscribe( (conn) => {
+      expect(conn.request.method).toBe(RequestMethod.Get);
+      expect(conn.request.url).toBe("api/albums/5");
+      conn.mockRespond(new Response(new ResponseOptions({
+        body: JSON.stringify(mockResponse) 
+      })))
+    });
+
+    const albumToGet = 5;
+    service.getAlbum(5).subscribe( (album) => {
+      expect(album).toBeTruthy();
+      expect(album.id).toBe(5);
+    });
+   })
+  );
 });
