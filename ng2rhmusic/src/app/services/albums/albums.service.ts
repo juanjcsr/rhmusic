@@ -12,7 +12,7 @@ export class AlbumsService {
 
   public getAlbums() {
     return this.http.get(this.albumsUrl)
-      .map( d => d.json().data )
+      .map( d => d.json() )
   }
 
 }

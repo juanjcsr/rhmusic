@@ -21,14 +21,13 @@ describe('AlbumsService', () => {
 
   it('should get an observable from the endpoint', 
     inject([AlbumsService, XHRBackend], (service: AlbumsService, mockBackend: MockBackend) => {
-      const mockResponse = {
-        data: [
+      const mockResponse = [
           { id: 0, name: 'Album 0' },
           { id: 1, name: 'Album 1' },
           { id: 2, name: 'Album 2' },
           { id: 3, name: 'Album 3' },
-        ]
-      }
+        ];
+      
       mockBackend.connections.subscribe((conn) => {
         conn.mockRespond(new Response(new ResponseOptions({
           body: JSON.stringify(mockResponse)

@@ -2,6 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlbumsComponent } from './albums.component';
 import { AlbumsService } from "app/services/albums/albums.service";
+import { Observable } from "rxjs/Observable";
+import 'rxjs/add/observable/of';
+
 
 describe('AlbumsComponent', () => {
   let component: AlbumsComponent;
@@ -10,7 +13,7 @@ describe('AlbumsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AlbumsComponent ],
-      providers: [ AlbumsService ]
+      providers: [ { provide: AlbumsService, useClass: MockAlbumService } ]
     })
     .compileComponents();
   }));
@@ -25,3 +28,14 @@ describe('AlbumsComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MockAlbumService {
+  getAlbums() {
+    return Observable.of([
+      {
+        id: 26,
+        name: "Album 26",
+      }]);
+
+  }
+}
