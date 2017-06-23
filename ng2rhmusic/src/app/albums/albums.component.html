@@ -2,6 +2,7 @@
   <div *ngFor="let album of albums">
     <p>Album Name: <a (click)="getTracks(album)">{{album.name}}</a>
     <button (click)="delete(album); $event.stopPropagation()">x</button></p>
+    <a [routerLink]="['/album', album.id]">Link</a>
   </div>
 
   <div>

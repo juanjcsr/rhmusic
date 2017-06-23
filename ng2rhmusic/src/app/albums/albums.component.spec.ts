@@ -6,6 +6,10 @@ import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/of';
 import {TracksComponent} from "app/tracks/tracks.component";
 import { TracksService } from "app/services/tracks/tracks.service";
+import { RouterModule, Router, ActivatedRoute } from "@angular/router";
+import { RouterTestingModule } from "@angular/router/testing";
+// import { ActivatedRouteStub } from "app/testing/router.stub";
+
 
 describe('AlbumsComponent', () => {
   let component: AlbumsComponent;
@@ -14,10 +18,13 @@ describe('AlbumsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ RouterTestingModule],
       declarations: [ AlbumsComponent, TracksComponent ],
       providers: [ 
         { provide: AlbumsService, useClass: MockAlbumService },
-        { provide: TracksService, useClass: MockTrackService} 
+        { provide: TracksService, useClass: MockTrackService},
+        // { provide: Router,      useClass: RouterStub },
+        // { provide: ActivatedRoute, useClass: ActivatedRouteStub} 
       ]
     })
     .compileComponents();
@@ -105,4 +112,8 @@ class MockTrackService {
   deleteTracks(id: number) {
     return Observable.of({});
   }
+}
+
+class RouterStub {
+  navigateByUrl(url: string) { return url; }
 }

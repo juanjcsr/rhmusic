@@ -10,13 +10,15 @@ import { HttpModule } from "@angular/http";
 import {AlbumsService} from "app/services/albums/albums.service";
 import { TracksComponent } from './tracks/tracks.component';
 import { TracksService } from "app/services/tracks/tracks.service";
+import { TracksRouteComponent } from './tracks-route/tracks-route.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlbumsComponent,
     AlbumFormComponent,
-    TracksComponent
+    TracksComponent,
+    TracksRouteComponent,
   ],
   imports: [
     BrowserModule,
