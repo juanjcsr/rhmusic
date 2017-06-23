@@ -27,5 +27,6 @@ module Redhatmusic
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.assets.paths << Rails.root.join("ng2rhmusic", "dist")
   end
 end
