@@ -1,6 +1,26 @@
 [![Build Status](https://travis-ci.org/juanjcsr/rhmusic.svg?branch=master)](https://travis-ci.org/juanjcsr/rhmusic)
 # RH Music app
 
+## How to use?
+
+You can add Albums to your music library by typing your album name in the text box **album name**:
+
+![Imgur](http://i.imgur.com/MGFKJTJ.png)
+
+Then, to add tracks to the album you can either click on the album name or click in the link `Album link`
+
+![Imgur](http://i.imgur.com/5K17E6t.png)
+
+Clicking on either of those links will open Album's track list where you can find the **add a new track** form:
+
+![Imgur](http://i.imgur.com/Su0yj0X.png)
+
+You can delete a single track from an album by clicking the "delete track" button (**the x to the right to the track name**).
+
+Also you can delete an album and all of its tracks by clicking the x button next to the album's name
+
+![Imgur](http://i.imgur.com/RbgHkHa.png?1)
+
 ## Dependencies
 
 **RH Music** uses Rails 5 as an API backend and Angular 2 as the frontend inside in the Rails environment. It also uses sqlite3 as the
