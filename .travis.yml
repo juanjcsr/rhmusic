@@ -14,6 +14,8 @@ before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - cd ng2rhmusic
+  - cd ng2rhmusic && npm install
+  - cd ..
 script:
-  - ng test --single-run
+  - bundle exec rspec
+  - cd ng2rhmusic && ng test --single-run
