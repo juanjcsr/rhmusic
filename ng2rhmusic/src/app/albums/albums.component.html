@@ -1,7 +1,7 @@
 <div class="six columns">
   <div *ngFor="let album of albums">
-    <p>Album Name: <a (click)="showTracks(album)">{{album.name}}</a></p>
-    <button (click)="delete(album); $event.stopPropagation()">x</button>
+    <p>Album Name: <a (click)="getTracks(album)">{{album.name}}</a>
+    <button (click)="delete(album); $event.stopPropagation()">x</button></p>
   </div>
 
   <div>

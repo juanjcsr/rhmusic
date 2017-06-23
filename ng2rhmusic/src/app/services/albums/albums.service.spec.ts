@@ -76,4 +76,19 @@ describe('AlbumsService', () => {
     });
    })
   );
+
+  it('should return an albums tracks', 
+  inject([AlbumsService, XHRBackend], (service: AlbumsService, mockBackend: MockBackend) =>{
+    const mockResponse = [ {id: 1, name: "song 1" }];
+    mockBackend.connections.subscribe( (conn ) =>{
+      conn.mockRespond(new Response(new ResponseOptions({
+        body: JSON.stringify(mockResponse)
+      })))
+    });
+
+    const albumToGet = 1;
+    service.getTracks(albumToGet).subscribe( (tracks) => {
+      expect(tracks).toBeTruthy();
+    });
+  }));
 });

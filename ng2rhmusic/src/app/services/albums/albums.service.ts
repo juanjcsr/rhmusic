@@ -8,7 +8,8 @@ import {Album} from "app/albums/albums";
 export class AlbumsService {
 
   private albumsUrl = 'api/albums';
-  private singleAlbumUrl = id =>`api/albums/${id}`
+  private singleAlbumUrl = id =>`api/albums/${id}`;
+  private albumTracksUrl = id => `api/albums/${id}/tracks`;
 
   constructor(private http: Http) {}
 
@@ -33,5 +34,12 @@ export class AlbumsService {
 
     return this.http.delete(albumUrl);
   }
+
+  public getTracks(id: number){
+    const albumUrl = this.albumTracksUrl(id);
+
+    return this.http.get(albumUrl).map( d => d.json() );
+  }
+
 
 }

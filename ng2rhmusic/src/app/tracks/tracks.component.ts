@@ -1,6 +1,7 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import {Album} from "app/albums/albums";
 import {AlbumsService} from "app/services/albums/albums.service";
+import {Tracks} from "app/tracks/tracks";
 
 @Component({
   selector: 'app-tracks',
@@ -10,6 +11,7 @@ import {AlbumsService} from "app/services/albums/albums.service";
 export class TracksComponent implements OnInit {
 
   @Input() album: Album;
+  public tracks: Tracks[];
 
   constructor( private albumService: AlbumsService  ) { }
 
@@ -17,7 +19,10 @@ export class TracksComponent implements OnInit {
   }
 
   ngOnChanges() {
-    console.log(this.album);
+    if (this.album ) {
+      this.albumService.getTracks(this.album.id).subscribe( t => this.tracks = t);
+    }
+    
   }
 
 }

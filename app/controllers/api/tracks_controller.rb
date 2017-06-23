@@ -12,7 +12,7 @@ class Api::TracksController < ApplicationController
 
   def create
     @album.tracks.create!(track_params)
-    json_response(@album, :created)
+    json_response(@album.tracks, :created)
   end
 
   def update
