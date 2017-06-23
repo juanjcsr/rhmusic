@@ -1,21 +1,17 @@
 language: ruby
 rvm:
   - 2.4
-sudo: true
 addons:
 apt:
-  # sources:
-  #   - google-chrome
-  # packages:
-  #   - google-chrome-stable fluxbox
-  #   - google-chrome-beta
+  sources:
+    - google-chrome
+  packages:
+    - google-chrome-stable fluxbox
+    - google-chrome-beta
 before_install:
   - nvm install node
   - npm install -g @angular/cli
-  - sudo apt-get install -y libappindicator1 fonts-liberation
-  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-  - sudo dpkg -i google-chrome*.deb
-  - export CHROME_BIN=chromium-browser
+  # - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - sleep 3
