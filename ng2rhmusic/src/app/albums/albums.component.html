@@ -1,0 +1,18 @@
+<div class="six columns">
+  <div *ngFor="let album of albums">
+    <p>Album Name: <a (click)="getTracks(album)">{{album.name}}</a>
+    <button (click)="delete(album); $event.stopPropagation()">x</button></p>
+    <a [routerLink]="['/album', album.id]">Link</a>
+  </div>
+
+  <div>
+    <label>Album name:</label> <input #albumName/>
+    <button  (click)="add(albumName.value); albumName.value=''">
+      Add
+    </button>
+  </div>
+</div>
+
+<div class="six colums">
+<app-tracks [album]="album"></app-tracks>
+</div>

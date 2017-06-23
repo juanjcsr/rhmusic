@@ -5,4 +5,7 @@ Rails.application.routes.draw do
       resources :tracks
     end
   end
+
+  root to: "ng2_rh_music#index"
+  get "/*path", controller: "ng2_rh_music", action: "index"
 end
