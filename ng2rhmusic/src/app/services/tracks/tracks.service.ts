@@ -8,6 +8,12 @@ export class TracksService {
 
   constructor(private http: Http) { }
 
+  /*
+   * TODO:
+   * According to Angular.io docs, simple http requests should return a Promise 
+   * insted of an Observable. 
+   */
+
   public postTrack(albumId: number, name: string) {
     const url = this.tracksUrl(albumId, "");
     console.log(url);

@@ -13,6 +13,13 @@ export class AlbumsService {
 
   constructor(private http: Http) {}
 
+
+  /*
+   * TODO:
+   * According to Angular.io docs, simple http requests should return a Promise 
+   * insted of an Observable. 
+   */
+
   public getAlbums() {
     return this.http.get(this.albumsUrl)
       .map( d => d.json() )

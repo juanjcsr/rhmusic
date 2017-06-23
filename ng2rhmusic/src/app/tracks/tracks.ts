@@ -1,3 +1,6 @@
+/*
+ * Track represents a backend Track model  
+ */
 export class Track {
     constructor(
     public id: number,

@@ -22,6 +22,7 @@ export class TracksComponent implements OnInit {
 
   }
 
+ // Check for new album data to get tracks
   ngOnChanges() {
     if (this.album ) {
       this.albumService.getTracks(this.album.id).subscribe( t => this.tracks = t);
@@ -47,7 +48,6 @@ export class TracksComponent implements OnInit {
     this.trackService.deleteTrack(this.album.id, track.id)
       .subscribe( () => {
         this.tracks = this.tracks.filter( t => t != track);
-        
       });
   }
 

@@ -16,15 +16,15 @@ export class AlbumsComponent implements OnInit {
   constructor(private aService: AlbumsService) { }
 
   ngOnInit() {
+    // Get albums as soon as this component is loaded
     this.aService.getAlbums().subscribe( d => this.albums = d );
-    // this.albums.
   }
 
   public add(name: string): void {
     name = name.trim();
     if ( !name ) {  return }
     this.aService.postAlbum(name).subscribe( (d) => {
-      this.albums.push(d);
+      this.albums.push(d); // This should probably be replaced with a new call to the server
     })
   }
 

@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AlbumsComponent } from './albums/albums.component';
-import { AlbumFormComponent } from './albums/albums.forms.component';
 import { AppRoutingModule } from "app/app.router";
 import { HttpModule } from "@angular/http";
 import {AlbumsService} from "app/services/albums/albums.service";
@@ -16,7 +15,6 @@ import { TracksRouteComponent } from './tracks-route/tracks-route.component';
   declarations: [
     AppComponent,
     AlbumsComponent,
-    AlbumFormComponent,
     TracksComponent,
     TracksRouteComponent,
   ],
