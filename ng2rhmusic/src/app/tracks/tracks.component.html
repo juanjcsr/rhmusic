@@ -1,3 +1,5 @@
+<p *ngIf="showForm">Adding tracks for: {{title}}</p>
+
 <div *ngFor="let track of tracks">
   <p>Track Name: <span>{{track.name}}</span>
     <button (click)="delete(track); $event.stopPropagation">x</button> 

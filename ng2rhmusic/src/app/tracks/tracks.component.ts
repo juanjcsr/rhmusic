@@ -14,19 +14,23 @@ export class TracksComponent implements OnInit {
   @Input() album: Album;
   public tracks: Track[];
   public showForm = false;
+  public title = "";
 
   constructor( private albumService: AlbumsService, private trackService: TracksService ) { }
 
   ngOnInit() {
+
   }
 
   ngOnChanges() {
     if (this.album ) {
       this.albumService.getTracks(this.album.id).subscribe( t => this.tracks = t);
       this.showForm = true;
+      this.title = this.album.name
     } else {
       this.showForm = false;
       this.tracks = [];
+      this.title = "";
     }
   }
 
