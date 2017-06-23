@@ -1,13 +1,13 @@
-<p *ngIf="showForm">Adding tracks for: {{title}}</p>
+<p *ngIf="showForm">Listing tracks for: <strong>{{title}}</strong></p>
 
 <div *ngFor="let track of tracks">
-  <p>Track Name: <span>{{track.name}}</span>
+  <span>{{track.name}}</span>
     <button (click)="delete(track); $event.stopPropagation">x</button> 
   <p>
 </div>
 
 <div *ngIf="showForm">
-    <label>Track name:</label> <input #trackName/>
+    <label>Add a new track:</label> <input placeholder="Track name" #trackName/>
     <button  (click)="add(trackName.value); trackName.value=''">
       Add
     </button>
