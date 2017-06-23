@@ -1,7 +1,8 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import {Album} from "app/albums/albums";
 import {AlbumsService} from "app/services/albums/albums.service";
-import {Tracks} from "app/tracks/tracks";
+import {Track} from "app/tracks/tracks";
+import { TracksService } from "app/services/tracks/tracks.service";
 
 @Component({
   selector: 'app-tracks',
@@ -11,9 +12,10 @@ import {Tracks} from "app/tracks/tracks";
 export class TracksComponent implements OnInit {
 
   @Input() album: Album;
-  public tracks: Tracks[];
+  public tracks: Track[];
+  public showForm = false;
 
-  constructor( private albumService: AlbumsService  ) { }
+  constructor( private albumService: AlbumsService, private trackService: TracksService ) { }
 
   ngOnInit() {
   }
@@ -21,8 +23,28 @@ export class TracksComponent implements OnInit {
   ngOnChanges() {
     if (this.album ) {
       this.albumService.getTracks(this.album.id).subscribe( t => this.tracks = t);
+      this.showForm = true;
+    } else {
+      this.showForm = false;
+      this.tracks = [];
     }
-    
+  }
+
+  public add(name: string) {
+    name = name.trim();
+    console.log(name);
+    if (!name || !this.album.id) { return }
+    this.trackService.postTrack(this.album.id, name).subscribe( (d) => {
+      this.tracks = d;
+    })
+  }
+
+  public delete(track: Track) {
+    this.trackService.deleteTrack(this.album.id, track.id)
+      .subscribe( () => {
+        this.tracks = this.tracks.filter( t => t != track);
+        
+      });
   }
 
 }

@@ -1,3 +1,12 @@
-<p>
-  {{tracks | json}}
-</p>
+<div *ngFor="let track of tracks">
+  <p>Track Name: <span>{{track.name}}</span>
+    <button (click)="delete(track); $event.stopPropagation">x</button> 
+  <p>
+</div>
+
+<div *ngIf="showForm">
+    <label>Track name:</label> <input #trackName/>
+    <button  (click)="add(trackName.value); trackName.value=''">
+      Add
+    </button>
+</div>

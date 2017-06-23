@@ -5,6 +5,7 @@ import { AlbumsService } from "app/services/albums/albums.service";
 import { Observable } from "rxjs/Observable";
 import 'rxjs/add/observable/of';
 import {TracksComponent} from "app/tracks/tracks.component";
+import { TracksService } from "app/services/tracks/tracks.service";
 
 describe('AlbumsComponent', () => {
   let component: AlbumsComponent;
@@ -14,7 +15,10 @@ describe('AlbumsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ AlbumsComponent, TracksComponent ],
-      providers: [ { provide: AlbumsService, useClass: MockAlbumService } ]
+      providers: [ 
+        { provide: AlbumsService, useClass: MockAlbumService },
+        { provide: TracksService, useClass: MockTrackService} 
+      ]
     })
     .compileComponents();
   }));
@@ -74,6 +78,31 @@ class MockAlbumService {
   }
 
   deleteAlbum(id: number) {
+    return Observable.of({});
+  }
+}
+
+class MockTrackService {
+  
+  getTracks() {
+    return Observable.of([
+      {
+        id: 26,
+        name: "Album 26",
+      }]);
+
+  }
+
+  postTracks(name: string) {
+    return Observable.of([
+      {
+        id: 22,
+        name: name,
+      }
+    ]);
+  }
+
+  deleteTracks(id: number) {
     return Observable.of({});
   }
 }

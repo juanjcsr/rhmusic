@@ -9,6 +9,7 @@ import { AppRoutingModule } from "app/app.router";
 import { HttpModule } from "@angular/http";
 import {AlbumsService} from "app/services/albums/albums.service";
 import { TracksComponent } from './tracks/tracks.component';
+import { TracksService } from "app/services/tracks/tracks.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { TracksComponent } from './tracks/tracks.component';
     HttpModule,
     FormsModule,
   ],
-  providers: [ AlbumsService ],
+  providers: [ AlbumsService, TracksService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
